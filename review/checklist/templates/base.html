@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>editor-page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'styles.css' %}" >
+    <link rel="stylesheet" href="{% static 'styles.css' %}" >
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" >
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="shortcut icon" href="https://www.fbc.co.zw/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0/dist/css/bootstrap-select.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0/dist/js/bootstrap-select.min.js"></script>
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#712cf9">
+<style>
+    body {
+  background-image: url(https://images.squarespace-cdn.com/content/v1/5f8f1b0bd0e167061ad431da/1611695625959-9Z93OREVKE87VWT3A0DP/374-bleu.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  }
+  
+     .user-box {
+      align-items: center;
+      width: 30%;
+      padding: 9px 0;
+      font-size: 14px;
+      color: #0c0909;
+      margin-bottom: 30px;
+      border: none;
+      border-bottom: 1px solid #600aeb;
+      outline: none;
+      background: transparent;
+    }
+    .user-box-date {
+      align-items: center;
+      width: 20%;
+      padding: 9px 0;
+      font-size: 14px;
+      color: #0c0909;
+      margin-bottom: 30px;
+      border: none;
+      border-bottom: 1px solid #600aeb;
+      outline: none;
+      background: transparent;
+    }
+    .user-box-select {
+      align-items: center;
+      width: 10%;
+      padding: 9px 0;
+      font-size: 15px;
+      color: #0c0909;
+      margin-bottom: 30px;
+      border: none;
+      border-bottom: 1px solid #600aeb;
+      outline: none;
+      background: transparent;
+    }
+    .hero-btn{
+      display: inline-block;
+      text-decoration: none;
+      color: #030303;
+      border: 1px solid #3b1aa5;
+      padding: 9px 25px;
+      font-size: 14px;
+      background: transparent;
+      position: relative;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+    .hero-btn:hover{
+      border: 1px solid #4922c7;
+      background: #4962A9;
+      color: #fff;
+      transition: 1s;
+    }
+  </style>
+</head>
+<body style="text-align: center;background-color: aliceblue;">
+    <header class="navbar navbar-light " style="padding:15px; background-color: #4962A9; margin: 30px; border-radius: 2%;">
+        <a class="navbar-brand text-light" href="#">
+ 
+          <img src="{% static 'images/thumbs/logo.png' %}" width="80" height="30"alt="">
+            FBC Information Security' Checklist Review System
+        </a>
+        <span class="float-right mr-3 ">
+            <!--a href="#"class="text-white text-decoration-none mr-3"> Home</a-->
+
+        </span>   
+    </header>
+    <section  style="padding: 4rem;">
+        <div class="container mt-2">
+    {% block content %}
+    {% endblock %}
+  </div>
+  
+</section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
