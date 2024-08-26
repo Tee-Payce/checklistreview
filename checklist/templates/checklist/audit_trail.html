@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="width: 30%; margin-left: 20px; text-decoration: none;">
+    <ul class="nav nav-pills nav-fill gap-2 p-1 small rounded-5 shadow-sm" id="pillNav2" role="tablist" style="background-color: #4962A9;--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+      <li class="nav-item" role="presentation">
+       <a href="{% url 'checklist:users_mgmt' user.id  %}"> <button class="nav-link  rounded-5" id="home-tab2"  type="button" role="tab" aria-selected="true">User Manager</button></a>
+      </li>
+      
+    </ul>
+  </div>
+<div class="col-sm-12">
+    <div class="card" style="margin-top: 40px;border: 1px solid #4962A9;">
+        <div class="card-header" style="background-color: #4962A9; color:#fff;">
+            <h1>Audit Logs</h1>
+        </div>
+        <div class="card-body text-dark" style=" background-position: center; background-color: beige;">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-black" style="margin-right: 30px;width:90%; margin-left: 40px; font-size: larger;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Filters
+                  </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+            <form method="GET">
+                <label for="start_date">Start Date:</label>
+                <input class="form-control" type="date" id="start_date" name="start_date" value="{{ start_date|date:'Y-m-d' }}">
+            
+                <label for="end_date">End Date:</label>
+                <input class="form-control" type="date" id="end_date" name="end_date" value="{{ end_date|date:'Y-m-d' }}">
+            
+                <p>
+                    <label for="checklist_type">Checklist Type:</label>
+                    <select class="form-control" id="checklist_type" name="checklist_type">
+                      <option value="">All Types</option>
+                      {% for checklist_type_value, checklist_type_label in checklist_types %}
+                        <option value="{{ checklist_type_value }}" {% if checklist_type == checklist_type_value %}selected{% endif %}>{{ checklist_type_label }}</option>
+                      {% endfor %}
+                    </select>
+                </p>
+                <label for="reviewer">Reviewer:</label>
+                <select class="form-control" id="reviewer" name="reviewer">
+                    <option value="">All Reviewers</option>
+                    {% for reviewer in reviewers %}
+                        <option value="{{ reviewer.username }}" {% if reviewer_username == reviewer.username %}selected{% endif %}>{{ reviewer.username }}</option>
+                    {% endfor %}
+                </select>
+                <p>
+                    <label for="editor">Editor:</label>
+                    <select class="form-control" id="editor" name="editor">
+                        <option value="">All Editors</option>
+                        {% for editor in editors %}
+                            <option value="{{ editor.username }}" {% if editor_username == editor.username %}selected{% endif %}>{{ editor.username }}</option>
+                        {% endfor %}
+                    </select>
+                </p>
+                <p>
+                    <button type="submit" class="hero-btn">Filter</button>
+                    <button type="submit" name="clear_filters" value="true" class="hero-exit-btn">Clear Filters</button>
+                </p>
+            </form>
+                  </div>
+                </div>
+            
+        
+
+                  </div>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Event</th>
+                    <th>User</th>
+                    <th>Date and Time</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for entry in audit_trail_data %}
+                    <tr>
+                      <td>{{ entry.event }}</td>
+                      <td>{{ entry.user }}</td>
+                      <td>{{ entry.date_time|date:'Y-m-d H:i:s' }}</td>
+                      <td>{{ entry.details }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            <a href="{% url 'checklist:download_audit_trail_pdf' %}?start_date={{ start_date|date:'Y-m-d' }}&end_date={{ end_date|date:'Y-m-d' }}&checklist_type={{ checklist_type }}&reviewer={{ reviewer_username }}&editor={{ editor_username }}" class="hero-btn">Download PDF Report</a></div>
+</div>
+ 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+   <!--scripts-->
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+{% endblock %}

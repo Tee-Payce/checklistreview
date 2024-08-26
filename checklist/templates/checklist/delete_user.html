@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-secondary">{{ message }}</div>
+{% endfor %}
+{% endif %}
+
+<div class="col-sm-12">
+    <div class="card" style="margin-top: 40px;border: 1px solid #4962A9;">
+        <div class="card-header" style="background-color: #4962A9; color:#fff;">
+            <h1>Add User</h1>
+        </div>
+        <div class="card-body text-dark" style=" background-position: center;">
+            <div class="card-body">
+                <p>Are you sure you want to disable the user: <strong>{{ user.username }}</strong>?</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-flex justify-content-end">
+                        <a href='#' class="btn btn-secondary mr-2">Cancel</a>
+                        <button type="submit" class="btn btn-danger">Disable</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-secondary">{{ message }}</div>
+{% endfor %}
+{% endif %}
+
+<div class="col-sm-12">
+    <div class="card" style="margin-top: 40px;border: 1px solid #4962A9;">
+        <div class="card-header" style="background-color: #4962A9; color:#fff;">
+            <h1>Add User</h1>
+        </div>
+        <div class="card-body text-dark" style=" background-position: center;">
+            <form method="POST">
+                {% csrf_token %}
+                
+                <div class="card-body">
+                    {{ form.as_p }}
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

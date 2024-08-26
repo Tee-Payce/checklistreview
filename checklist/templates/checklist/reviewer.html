@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-danger">{{ message }}</div>
+{% endfor %}
+{% endif %}
+<div class="col-sm-12">
+  <div class="card" style="margin-top: 40px;border: 1px solid #4962A9;">
+      <div class="card-header" style="background-color: #4962A9; color:#fff;">
+          <h1>Checklist Review: {{ checklist.checklist_type}}</h1>
+      </div>
+      <div class="card-body text-dark" style=" background-position: center; background-color: beige;">
+  <iframe  src='{{ checklist.file.url }}' width="100%" height="500"></iframe>
+  <hr>
+  <h2>Comments</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="hero-btn" type="submit">Submit Review</button>
+  </form>
+{% endblock %}
