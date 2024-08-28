@@ -11,6 +11,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
+sys.path.append('C:\\Users\\sizibap\\Desktop\\checklistreview\\review')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'review.settings')
 
 application = get_wsgi_application()
